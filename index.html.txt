@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💖</title>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffb6c1, #ffd6e8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      width: 330px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      z-index: 2;
+    }
+
+    .lady {
+      font-size: 65px;
+    }
+
+    h2 {
+      margin: 15px 0;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      position: relative;
+      height: 70px;
+    }
+
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background: #ddd;
+      position: absolute;
+      left: 150px;
+      top: 0;
+    }
+
+    .result {
+      display: none;
+      margin-top: 20px;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 15px;
+      margin-top: 10px;
+    }
+
+    /* 💕 Floating hearts */
+    .heart {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: float 5s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🎵 Background music -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8c1c4e8c61.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <div class="lady">👩🏽‍❤️‍👨🏽💘</div>
+    <h2>EMMA 🥺💖  
+      will you be my Valentine?</h2>
+
+    <div class="buttons" id="buttons">
+      <button id="yes">Yes 💕</button>
+      <button id="no">No 😅</button>
+    </div>
+
+    <div class="result" id="result">
+      <h2>YAYYY 😍💃🏽</h2>
+      <p>You’re stuck with me now 😌💘</p>
+      <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+      <p>🇰🇪 Love loading… please wait 😄❤️</p>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const result = document.getElementById("result");
+    const buttons = document.getElementById("buttons");
+
+    // 😈 NO button becomes impossible
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * 250;
+      const y = Math.random() * 40;
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    // 💖 YES clicked
+    yesBtn.addEventListener("click", () => {
+      buttons.style.display = "none";
+      result.style.display = "block";
+    });
+
+    // 💕 Create floating hearts
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }, 300);
+  </script>
+
+</body>
+</html>
